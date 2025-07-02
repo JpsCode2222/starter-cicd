@@ -1,8 +1,11 @@
-name: Build
+name: Sonar Cloud Scan
 on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'README.md'
+      - '.github/workflows/*'
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
