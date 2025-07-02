@@ -4,9 +4,22 @@ jobs:
     test:
         runs-on: ubuntu-latest
         steps:
-            - name: User Message
-              run: |
-                echo "This is a test message from GitHub Actions."
-                echo "${{toJson(github)}}"
-                echo "https://github.com/${{toJson(github.event)}}.git"
-                echo "Cloning repository..."
+            - name: Get Code
+              uses: actions/checkout@v4
+            #   run: |
+            #     echo "This is a test message from GitHub Actions."
+            #     echo "${{toJson(github)}}"
+            #     echo "https://github.com/${{toJson(github.event)}}.git"
+            #     echo "Cloning repository..."
+            - name: Install Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version: 20
+            - name: print node version
+              run: nonde -v
+            - name: Install Dependencies
+              #run: npm install
+              run: npm ci
+            - name: Run Tests
+              run: npm run test
+            
