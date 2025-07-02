@@ -1,0 +1,8 @@
+name: Test
+on: [push, workflow_dispatch]
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: User Message
+              run: echo "This is a test message from GitHub Actions."
