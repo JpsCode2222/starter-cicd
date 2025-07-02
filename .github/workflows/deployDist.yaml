@@ -7,7 +7,7 @@ on:
             - feature/**
         paths-ignore:
             - 'README.md'
-            - '.github/workflows/**'
+            - '.github/workflows/*'
     workflow_dispatch:
 jobs:
     test:
@@ -36,10 +36,9 @@ jobs:
               run: npm ci
             - name: Run Tests
               run: npm run test
-    
-    deploy:
-        runs-on: ubuntu-latest
+    build:
         needs: test
+        runs-on: ubuntu-latest
         steps:
             - name: Get Code
               uses: actions/checkout@v4
@@ -58,6 +57,21 @@ jobs:
               run: npm ci
             - name: Build Project
               run: npm run build
+            - name: Upload Build Artifacts
+              uses: actions/upload-artifact@v4
+              with:
+                name: build-artifacts
+                path: dist                
+    
+    deploy:
+        needs: build 
+        runs-on: ubuntu-latest
+        steps:
+            - name: Download Build Artifacts
+              uses: actions/download-artifact@v4
+              with:
+                name: build-artifacts
+                path: dist   
             - name: Deploy Project
-              run: echo "Deploy Success"
+              run: echo "Deploy Successfull..."
             
