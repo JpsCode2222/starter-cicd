@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://JpsCode2222.github.io/starter-cicd",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
