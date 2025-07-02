@@ -5,4 +5,8 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: User Message
-              run: echo "This is a test message from GitHub Actions."
+              run: |
+                echo "This is a test message from GitHub Actions."
+                echo "${{toJson(github)}}"
+                echo "https://github.com/${{toJson(github.event)}}.git"
+                echo "Cloning repository..."
