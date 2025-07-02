@@ -16,7 +16,7 @@ jobs:
               with:
                 node-version: 20
             - name: print node version
-              run: nonde -v
+              run: node -v
             - name: Install Dependencies
               #run: npm install
               run: npm ci
